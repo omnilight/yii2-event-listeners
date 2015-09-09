@@ -41,6 +41,10 @@ class Listener
         foreach ($this->eventsProvider->getEventNames($emitterReflection) as $eventName) {
             $methodReflection = $this->methodFinder->getMethodForEvent($listenerReflection, $eventName);
 
+            if ($methodReflection === false) {
+                continue;
+            }
+
             $handler = $this->createHandler($listener, $methodReflection);
 
             if ($handler === false) {
@@ -83,6 +87,10 @@ class Listener
 
         foreach ($this->eventsProvider->getEventNames($emitterReflection) as $eventName) {
             $methodReflection = $this->methodFinder->getMethodForEvent($listenerReflection, $eventName);
+
+            if ($methodReflection === false) {
+                continue;
+            }
 
             $handler = $this->createHandler($listener, $methodReflection);
 

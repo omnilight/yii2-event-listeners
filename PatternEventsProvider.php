@@ -20,7 +20,7 @@ class PatternEventsProvider implements EmitterEventsProviderInterface
         $events = [];
 
         foreach ($class->getConstants() as $constantName => $constantValue) {
-            if (preg_match($this->pattern, $constantName) === false) {
+            if (preg_match($this->pattern, $constantName) == 0) {
                 continue;
             }
 
